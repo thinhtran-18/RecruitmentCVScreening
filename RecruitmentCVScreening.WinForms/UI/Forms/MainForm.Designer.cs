@@ -1,4 +1,4 @@
-﻿namespace RecruitmentCVScreening.WinForms.Presentation.Forms
+﻿namespace RecruitmentCVScreening.WinForms.UI.Forms
 {
     partial class MainForm
     {

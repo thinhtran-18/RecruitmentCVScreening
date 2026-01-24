@@ -1,4 +1,4 @@
-using RecruitmentCVScreening.WinForms.Presentation.Forms;
+using RecruitmentCVScreening.WinForms.UI.Forms;
 
 namespace RecruitmentCVScreening.WinForms;
 

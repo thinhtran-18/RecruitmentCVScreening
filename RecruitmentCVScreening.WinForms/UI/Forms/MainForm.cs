@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RecruitmentCVScreening.WinForms.Presentation.Forms;
-
-public partial class MainForm : Form
+namespace RecruitmentCVScreening.WinForms.UI.Forms
 {
-    public MainForm()
+    public partial class MainForm : Form
     {
-        InitializeComponent();
+        public MainForm()
+        {
+            InitializeComponent();
+        }
     }
 }

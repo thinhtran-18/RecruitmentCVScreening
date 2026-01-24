@@ -9,15 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\DTOs\" />
-    <Folder Include="Application\Services\" />
-    <Folder Include="Domain\Entities\" />
-    <Folder Include="Domain\Enums\" />
-    <Folder Include="Infrastructure\FileReaders\" />
-    <Folder Include="Infrastructure\Extractors\" />
-    <Folder Include="Infrastructure\Scheduling\" />
-    <Folder Include="Infrastructure\Scoring\" />
-    <Folder Include="Presentation\Controls\" />
+    <Folder Include="Business\DTOs\" />
+    <Folder Include="Business\Services\" />
+    <Folder Include="Core\Models\" />
+    <Folder Include="Core\Enums\" />
+    <Folder Include="CVProcessing\FileReaders\" />
+    <Folder Include="CVProcessing\Extractors\" />
+    <Folder Include="CVProcessing\Scheduling\" />
+    <Folder Include="CVProcessing\Scoring\" />
+    <Folder Include="UI\Controls\" />
   </ItemGroup>
 
 </Project>
