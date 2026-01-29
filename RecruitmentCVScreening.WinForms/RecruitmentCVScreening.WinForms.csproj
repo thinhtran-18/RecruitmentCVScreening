@@ -35,9 +35,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.7" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Scripts\" />
-  </ItemGroup>
   <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' == ''" />
 </Project>

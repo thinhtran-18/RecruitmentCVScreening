@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecruitmentCVScreening.WinForms.Core.Models;
-
-public class Interview
+namespace RecruitmentCVScreening.WinForms.Core.Enums
 {
+    internal class ApplicationStatus
+    {
+    }
 }

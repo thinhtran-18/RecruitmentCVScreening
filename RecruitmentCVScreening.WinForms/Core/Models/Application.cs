@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecruitmentCVScreening.WinForms.Data.Contracts;
-
-internal interface IInterviewData
+namespace RecruitmentCVScreening.WinForms.Core.Models
 {
+    internal class Application
+    {
+    }
 }

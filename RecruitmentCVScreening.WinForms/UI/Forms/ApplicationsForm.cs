@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RecruitmentCVScreening.WinForms.UI.Forms
 {
-    public partial class InterviewScheduleForm : Form
+    public partial class ApplicationsForm : Form
     {
-        public InterviewScheduleForm()
+        public ApplicationsForm()
         {
             InitializeComponent();
         }
