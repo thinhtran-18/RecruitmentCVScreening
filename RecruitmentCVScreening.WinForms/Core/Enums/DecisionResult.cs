@@ -8,5 +8,6 @@ namespace RecruitmentCVScreening.WinForms.Core.Enums;
 
 public enum DecisionResult
 {
-
+    InviteInterview,
+    Reject
 }

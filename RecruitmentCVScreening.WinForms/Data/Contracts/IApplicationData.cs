@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecruitmentCVScreening.WinForms.Data.Contracts
 {
-    internal class IApplicationData
+    internal interface IApplicationData
     {
     }
 }

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecruitmentCVScreening.WinForms.Core.Enums
+namespace RecruitmentCVScreening.WinForms.Core.Enums;
+
+public enum ApplicationStatus
 {
-    internal class ApplicationStatus
-    {
-    }
+    Pending,
+        Accepted,
+        Rejected
 }
+

@@ -7,5 +7,7 @@ using System.Threading.Tasks;
 namespace RecruitmentCVScreening.WinForms.Core.Enums;
 public enum CVStatus
 {
-  
+    New,
+    Scored,
+    Rejected
 }
