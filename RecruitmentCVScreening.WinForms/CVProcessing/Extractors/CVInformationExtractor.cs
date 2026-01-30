@@ -11,6 +11,8 @@ namespace RecruitmentCVScreening.WinForms.CVProcessing.Extractors
     {
         public CVExtractResultDto Extract(string text)
         {
+            text = NormalizeText(text);
+
             return new CVExtractResultDto
             {
                 FullName = ExtractName(text),
@@ -19,21 +21,67 @@ namespace RecruitmentCVScreening.WinForms.CVProcessing.Extractors
                 YearsOfExperience = ExtractExperience(text)
             };
         }
+        private string NormalizeText(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return string.Empty;
+
+            string normalized = text;
+
+            // Chèn khoảng trắng trước các keyword hay bị dính
+            string[] keywords = { "Email", "Skills", "Experience", "Education" };
+
+            foreach (var k in keywords)
+            {
+                normalized = Regex.Replace(
+                    normalized,
+                    k,
+                    " " + k,
+                    RegexOptions.IgnoreCase
+                );
+            }
+
+            // Chuẩn hóa khoảng trắng
+            normalized = Regex.Replace(normalized, @"\s+", " ").Trim();
+
+            return normalized;
+        }
 
         private string ExtractName(string text)
         {
-            // Giả sử tên nằm ở 2 dòng đầu
-            var lines = text.Split('\n');
-            return lines.Length > 0 ? lines[0].Trim() : "Unknown";
+            if (string.IsNullOrWhiteSpace(text))
+        return string.Empty;
+
+    // Chuẩn hóa text
+    var cleanText = text
+        .Replace("\r", " ")
+        .Replace("\n", " ")
+        .Replace("\t", " ");
+
+    // Tách theo từ khóa
+    var parts = Regex.Split(
+        cleanText,
+        @"Email\s*:|Skills\s*:|Experience\s*:",
+        RegexOptions.IgnoreCase
+    );
+
+    // Phần đầu tiên thường là tên
+    var name = parts[0].Trim();
+
+    // Loại bỏ ký tự lạ
+    name = Regex.Replace(name, @"[^a-zA-ZÀ-ỹ\s]", "").Trim();
+
+    return name;
         }
 
         private string ExtractEmail(string text)
         {
             var match = Regex.Match(
-                text,
-                @"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-            );
-            return match.Success ? match.Value : "";
+        text,
+        @"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b"
+    );
+
+            return match.Success ? match.Value.Trim() : string.Empty;
         }
 
         private string ExtractSkills(string text)
