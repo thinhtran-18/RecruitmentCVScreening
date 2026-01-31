@@ -13,7 +13,6 @@ public class Job
 
     // Thông tin cơ bản
     public string Title { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
 
     // Tiêu chí tuyển dụng                   ( từ dòng 18 đến 20  tao dùng cái này để code đấy cấm xóa )
     public string RequiredSkills { get; set; } = string.Empty;

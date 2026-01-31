@@ -21,7 +21,7 @@ public class ScoringService
         foreach (var skill in job.RequiredSkills.Split(','))
         {
             if (cv.Skills.Contains(skill.Trim(), StringComparison.OrdinalIgnoreCase))
-                score += 10;
+                score += 30;
         }
 
         return score;

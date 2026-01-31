@@ -14,7 +14,7 @@ namespace RecruitmentCVScreening.WinForms.Business.Services;
 
 public class CVProcessingService
 {
-    public CandidateScoreDto Process(string filePath, Job job)
+    public CandidateScoreDto Process(string fullName, string email, string filePath, Job job)
     {
         // 1. Đọc CV
         ICVReader reader = new DocxCVReader();
