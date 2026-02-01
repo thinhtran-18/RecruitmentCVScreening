@@ -16,5 +16,10 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         {
             InitializeComponent();
         }
+
+        private void CandidateListForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
