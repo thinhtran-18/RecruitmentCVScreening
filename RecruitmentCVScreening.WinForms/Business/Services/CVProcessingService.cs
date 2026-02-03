@@ -44,6 +44,8 @@ public class CVProcessingService
         var scoringService = new ScoringService();
         var score = scoringService.Calculate(cvInfo, job);
 
+
+
         // 4. Lưu Application
         var application = new RecruitmentCVScreening.WinForms.Core.Models.Application
         {

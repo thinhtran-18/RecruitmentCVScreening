@@ -8,10 +8,14 @@ namespace RecruitmentCVScreening.WinForms.Business.DTOs;
 
 public class CandidateScoreDto
 {
-    public string FullName { get; set; }
+    public string FullName { get; set; } 
     public string Email { get; set; }
     public double Score { get; set; }
 
     public string Skills { get; set; }
     public string Decision { get; set; }
+
+
+
+   
 }

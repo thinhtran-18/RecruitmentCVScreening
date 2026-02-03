@@ -19,7 +19,7 @@ namespace RecruitmentCVScreening.WinForms.Business.Services
             string filePath,
             Job job)
         {
-            // GỌI NGUYÊN CVProcessing CỦA BẠN
+            // GỌI NGUYÊN CVProcessing đã có 
             return _cvProcessing.Process( fullName, email, filePath, job);
         }
     }
