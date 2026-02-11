@@ -1,5 +1,6 @@
 ﻿using RecruitmentCVScreening.WinForms.Business.DTOs;
 using RecruitmentCVScreening.WinForms.Core.Models;
+using RecruitmentCVScreening.WinForms.Data.Tables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,11 @@ namespace RecruitmentCVScreening.WinForms.Business.Services
             // GỌI NGUYÊN CVProcessing đã có 
             return _cvProcessing.Process( fullName, email, filePath, job);
         }
+        public List<ApplicationDto> GetCandidateScores()
+        {
+            var data = new ApplicationData();
+            return data.GetAllForRanking();
+        }
     }
+
 }

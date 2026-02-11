@@ -16,6 +16,6 @@ public class CandidateScoreDto
     public string Decision { get; set; }
 
 
+    public int Rank { get; set; }
 
-   
 }

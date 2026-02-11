@@ -14,5 +14,7 @@ namespace RecruitmentCVScreening.WinForms.Business.DTOs
         public string JobTitle { get; set; } = string.Empty;
         public double Score { get; set; }
         public string Status { get; set; } = string.Empty;
+
+        public int Rank { get; set; }
     }
 }
