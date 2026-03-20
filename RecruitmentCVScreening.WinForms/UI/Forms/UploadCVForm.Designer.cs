@@ -152,9 +152,9 @@
             // 
             // btnUpload
             // 
-            btnUpload.BackColor = SystemColors.MenuHighlight;
-            btnUpload.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnUpload.ForeColor = SystemColors.ButtonHighlight;
+            btnUpload.BackColor = SystemColors.HighlightText;
+            btnUpload.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            btnUpload.ForeColor = SystemColors.ControlText;
             btnUpload.ImageAlign = ContentAlignment.MiddleLeft;
             btnUpload.Location = new Point(63, 465);
             btnUpload.Name = "btnUpload";
@@ -166,12 +166,13 @@
             // 
             // btnCancel
             // 
+            btnCancel.BackColor = SystemColors.HighlightText;
             btnCancel.Location = new Point(264, 465);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(117, 42);
             btnCancel.TabIndex = 3;
             btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.UseVisualStyleBackColor = false;
             // 
             // lblStatus
             // 

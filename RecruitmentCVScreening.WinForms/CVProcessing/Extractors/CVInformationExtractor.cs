@@ -86,7 +86,7 @@ namespace RecruitmentCVScreening.WinForms.CVProcessing.Extractors
 
         private string ExtractSkills(string text)
         {
-            string[] keywords = { "C#", ".NET", "SQL", "Java", "Python" };
+            string[] keywords = { "C#", ".NET", "SQL", "Java", "Python" , "C++" };
             var found = keywords.Where(k => text.Contains(k));
             return string.Join(", ", found);
         }

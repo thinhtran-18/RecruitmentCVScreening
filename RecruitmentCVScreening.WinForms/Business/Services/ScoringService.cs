@@ -15,15 +15,34 @@ public class ScoringService
 
         // Kinh nghiệm
         if (cv.YearsOfExperience >= job.MinExperience)
-            score += 30;
-
-        // Skill match
-        foreach (var skill in job.RequiredSkills.Split(','))
         {
-            if (cv.Skills.Contains(skill.Trim(), StringComparison.OrdinalIgnoreCase))
-                score += 30;
+            int extraYears = cv.YearsOfExperience - job.MinExperience;
+
+            double experienceScore = 30 + (extraYears * 5);
+
+            // Giới hạn tối đa 50 điểm
+           score += Math.Min(experienceScore, 50);
+
+            
         }
 
-        return score;
+        // Skill match
+        int matchCount = 0;
+
+        var requiredSkills = job.RequiredSkills.Split(',');
+
+        foreach (var skill in requiredSkills)
+        {
+            if (cv.Skills.Contains(skill.Trim(), StringComparison.OrdinalIgnoreCase))
+            {
+                matchCount++;
+            }
+        }
+
+        double skillScore = matchCount * 10; // mỗi skill 10 điểm
+
+        score += Math.Min(skillScore, 50);
+
+        return Math.Min(score, 100);
     }
 }

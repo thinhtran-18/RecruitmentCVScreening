@@ -52,7 +52,9 @@ public class CVProcessingService
             JobId = job.Id,
             CandidateId = candidateId,
             Score = score,
-            Status = ApplicationStatus.Pending
+            Status = score >= 60
+            ? ApplicationStatus.Accepted
+            : ApplicationStatus.Rejected
         };
 
         var appData = new ApplicationData();
