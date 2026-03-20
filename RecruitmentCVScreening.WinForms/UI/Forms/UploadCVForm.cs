@@ -18,6 +18,10 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             InitializeComponent();
             _applicationService = new ApplicationService();
             LoadJobs();
+            StylePrimaryButton(btnUpload);
+            StyleSecondaryButton(btnCancel);
+            StyleThirButton(btnBrowse);
+            SetupUX();
         }
         private string _cvPath;
 
@@ -43,8 +47,24 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 _cvPath = dlg.FileName;
-                txtCVPath.Text = _cvPath;
+                txtCVPath.Text = Path.GetFileName(_cvPath);
             }
+        }
+
+        private void SetupUX() //nâng cấp giao diện của groupbõ chọn file từ máy
+        {
+            txtCVPath.Text = "Chưa chọn file...";
+            txtCVPath.ForeColor = Color.Gray;
+
+            btnUpload.MouseEnter += (s, e) =>
+            {
+                btnUpload.BackColor = Color.FromArgb(30, 144, 255);
+            };
+
+            btnUpload.MouseLeave += (s, e) =>
+            {
+                btnUpload.BackColor = Color.FromArgb(0, 120, 215);
+            };
         }
 
         private void btnUpload_Click(object sender, EventArgs e)
@@ -121,5 +141,33 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         {
 
         }
+
+        private void StylePrimaryButton(Button btn)
+        {
+            btn.BackColor = Color.FromArgb(0, 120, 215);
+            btn.ForeColor = Color.White;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.Height = 40;
+        }
+
+        private void StyleSecondaryButton(Button btn)
+        {
+            btn.BackColor = Color.FromArgb(231, 76, 60);
+            btn.ForeColor = Color.White;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+
+        }
+        private void StyleThirButton(Button btn)
+        {
+            btn.BackColor = Color.FromArgb(39, 174, 96);
+            btn.ForeColor = Color.White;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+
+        }
+
     }
+
 }
