@@ -11,9 +11,13 @@ public static class Program
     [STAThread]
     static void Main()
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
-        ApplicationConfiguration.Initialize();
-        System.Windows.Forms.Application.Run(new CandidateListForm());
+       
+            // 1. Lệnh này của .NET mới đã tự động bao gồm cấu hình giao diện
+            ApplicationConfiguration.Initialize();
+
+            // 2. Khởi chạy trực tiếp MainForm của chúng ta
+            Application.Run(new UI.Forms.MainForm());
+        
     }
 }
+
