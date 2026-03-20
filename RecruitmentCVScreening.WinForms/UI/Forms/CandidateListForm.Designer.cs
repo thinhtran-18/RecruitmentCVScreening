@@ -55,11 +55,12 @@
             dgvCandidates.ReadOnly = true;
             dgvCandidates.RowHeadersWidth = 62;
             dgvCandidates.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCandidates.Size = new Size(942, 564);
+            dgvCandidates.Size = new Size(931, 561);
             dgvCandidates.TabIndex = 0;
             // 
             // groupBox1
             // 
+            groupBox1.BackgroundImageLayout = ImageLayout.Stretch;
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
@@ -68,9 +69,9 @@
             groupBox1.Controls.Add(txtScore);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtName);
-            groupBox1.Location = new Point(988, 12);
+            groupBox1.Location = new Point(973, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(479, 564);
+            groupBox1.Size = new Size(458, 561);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chi Tiết Ứng Viên";
@@ -88,7 +89,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(28, 272);
+            label3.Location = new Point(28, 278);
             label3.Name = "label3";
             label3.Size = new Size(63, 25);
             label3.TabIndex = 6;
@@ -106,11 +107,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(28, 85);
+            label1.Location = new Point(28, 91);
             label1.Name = "label1";
             label1.Size = new Size(76, 25);
             label1.TabIndex = 4;
             label1.Text = "Họ Tên :";
+            label1.Click += label1_Click;
             // 
             // txtDecision
             // 
@@ -151,18 +153,18 @@
             // 
             // btnReload
             // 
-            btnReload.Location = new Point(1038, 639);
+            btnReload.Location = new Point(439, 624);
             btnReload.Name = "btnReload";
-            btnReload.Size = new Size(112, 34);
+            btnReload.Size = new Size(146, 49);
             btnReload.TabIndex = 2;
             btnReload.Text = "Tải Lại";
             btnReload.UseVisualStyleBackColor = true;
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(1293, 639);
+            btnBack.Location = new Point(868, 624);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(112, 34);
+            btnBack.Size = new Size(172, 49);
             btnBack.TabIndex = 3;
             btnBack.Text = "Menu";
             btnBack.UseVisualStyleBackColor = true;
@@ -171,11 +173,13 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1467, 734);
             Controls.Add(btnBack);
             Controls.Add(btnReload);
             Controls.Add(groupBox1);
             Controls.Add(dgvCandidates);
+            DoubleBuffered = true;
             Name = "CandidateListForm";
             Text = "CandidateListForm";
             Load += CandidateListForm_Load;
