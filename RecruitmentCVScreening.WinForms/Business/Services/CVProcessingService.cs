@@ -46,7 +46,7 @@ public class CVProcessingService
 
 
 
-        // 4. Lưu Application
+        // 4. Lưu vào bảng Application
         var application = new RecruitmentCVScreening.WinForms.Core.Models.Application
         {
             JobId = job.Id,
