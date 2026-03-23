@@ -21,6 +21,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             StylePrimaryButton(btnUpload);
             StyleSecondaryButton(btnCancel);
             StyleThirButton(btnBrowse);
+            StyleFourButton(btnMenu);
             SetupUX();
         }
         private string _cvPath;
@@ -72,6 +73,16 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             if (!ValidateInput())
                 return;
             Job selectedJob = cboJobs.SelectedItem as Job;
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn upload CV không?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+                return;
+
 
             if (selectedJob == null)
             {
@@ -167,7 +178,39 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             btn.FlatAppearance.BorderSize = 0;
 
         }
+        private void StyleFourButton(Button btn)
+        {
+            btn.BackColor = Color.FromArgb(0, 120, 215);
+            btn.ForeColor = Color.White;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
 
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+        "Bạn có chắc muốn xoá toàn bộ dữ liệu?",
+        "Xác nhận",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning
+    );
+
+            if (result == DialogResult.Yes)
+            {
+                txtFullName.Text = "";
+                txtEmail.Text = "";
+                txtCVPath.Text = "";
+
+                txtFullName.Focus();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

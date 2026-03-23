@@ -40,6 +40,8 @@
             txtName = new TextBox();
             btnReload = new Button();
             btnBack = new Button();
+            txtSearchName = new TextBox();
+            btnSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCandidates).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -50,12 +52,12 @@
             dgvCandidates.AllowUserToDeleteRows = false;
             dgvCandidates.BackgroundColor = SystemColors.Window;
             dgvCandidates.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCandidates.Location = new Point(12, 12);
+            dgvCandidates.Location = new Point(12, 84);
             dgvCandidates.Name = "dgvCandidates";
             dgvCandidates.ReadOnly = true;
             dgvCandidates.RowHeadersWidth = 62;
             dgvCandidates.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCandidates.Size = new Size(931, 561);
+            dgvCandidates.Size = new Size(931, 489);
             dgvCandidates.TabIndex = 0;
             // 
             // groupBox1
@@ -153,21 +155,39 @@
             // 
             // btnReload
             // 
-            btnReload.Location = new Point(439, 624);
+            btnReload.Location = new Point(489, 624);
             btnReload.Name = "btnReload";
             btnReload.Size = new Size(146, 49);
             btnReload.TabIndex = 2;
-            btnReload.Text = "Tải Lại";
+            btnReload.Text = " 🔄  Tải Lại ";
             btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
             // 
             // btnBack
             // 
             btnBack.Location = new Point(868, 624);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(172, 49);
+            btnBack.Size = new Size(151, 49);
             btnBack.TabIndex = 3;
-            btnBack.Text = "Menu";
+            btnBack.Text = " ☰  Menu";
             btnBack.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchName
+            // 
+            txtSearchName.Location = new Point(188, 28);
+            txtSearchName.Name = "txtSearchName";
+            txtSearchName.Size = new Size(755, 31);
+            txtSearchName.TabIndex = 4;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(37, 28);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(132, 34);
+            btnSearch.TabIndex = 5;
+            btnSearch.Text = "🔍 Tìm Kiếm ";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // CandidateListForm
             // 
@@ -175,6 +195,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1467, 734);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearchName);
             Controls.Add(btnBack);
             Controls.Add(btnReload);
             Controls.Add(groupBox1);
@@ -187,6 +209,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -203,5 +226,7 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private TextBox txtSearchName;
+        private Button btnSearch;
     }
 }

@@ -25,6 +25,8 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         }
         private readonly ApplicationService _applicationService = new();
 
+        private List<ApplicationDto> _allData = new List<ApplicationDto>();
+
         private void CandidateListForm_Load(object sender, EventArgs e)
         {
             LoadCandidates();
@@ -42,7 +44,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             {
                 HeaderText = "Hạng",
                 DataPropertyName = "Rank",
-                Width = 60
+                Width = 20
             });
 
             dgvCandidates.Columns.Add(new DataGridViewTextBoxColumn
@@ -86,10 +88,10 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
         private void LoadCandidates()
         {
-            List<ApplicationDto> list = _applicationService.GetCandidateScores();
+            _allData = _applicationService.GetCandidateScores();
 
             // Xếp hạng theo điểm
-            var rankedList = list
+            var rankedList = _allData
                 .OrderByDescending(x => x.Score)
                 .Select((x, index) =>
                 {
@@ -98,6 +100,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
                 })
                 .ToList();
 
+            dgvCandidates.DataSource = null; // tránh bug binding
             dgvCandidates.DataSource = rankedList;
 
             // Clear chi tiết nếu chưa chọn dòng
@@ -135,6 +138,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
         private void btnReload_Click(object sender, EventArgs e)
         {
+            txtSearchName.Text = ""; 
             LoadCandidates();
         }
 
@@ -203,12 +207,17 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.FlatAppearance.BorderSize = 0;
 
+            btnSearch.BackColor = Color.FromArgb(39, 174, 96);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.FlatAppearance.BorderSize = 0;
 
 
-            
+
+
         }
 
-        
+
         private void StyleDetailUI()
         {
             // 👉 Tên
@@ -264,6 +273,31 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
                 control.Region = new Region(path);
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearchName.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                MessageBox.Show("Nhập tên cần tìm!");
+                return;
+            }
+
+            var result = _allData
+                .Where(x => x.FullName != null &&
+                            x.FullName.ToLower().Contains(keyword))
+                .ToList();
+
+            if (result.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy!");
+                return;
+            }
+
+            dgvCandidates.DataSource = null;
+            dgvCandidates.DataSource = result;
         }
     }
 

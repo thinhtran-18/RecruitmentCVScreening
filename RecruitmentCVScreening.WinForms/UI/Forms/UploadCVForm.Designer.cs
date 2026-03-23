@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             grpCandidateInfo = new GroupBox();
+            btnMenu = new Button();
             cboJobs = new ComboBox();
             label2 = new Label();
             txtEmail = new TextBox();
@@ -48,19 +49,30 @@
             // 
             // grpCandidateInfo
             // 
+            grpCandidateInfo.Controls.Add(btnMenu);
             grpCandidateInfo.Controls.Add(cboJobs);
             grpCandidateInfo.Controls.Add(label2);
             grpCandidateInfo.Controls.Add(txtEmail);
             grpCandidateInfo.Controls.Add(txtFullName);
             grpCandidateInfo.Controls.Add(lblemail);
             grpCandidateInfo.Controls.Add(lblname);
-            grpCandidateInfo.Location = new Point(0, 3);
+            grpCandidateInfo.Location = new Point(0, 12);
             grpCandidateInfo.Name = "grpCandidateInfo";
             grpCandidateInfo.Size = new Size(1168, 262);
             grpCandidateInfo.TabIndex = 0;
             grpCandidateInfo.TabStop = false;
             grpCandidateInfo.Text = "Thông Tin Ứng Viên";
             grpCandidateInfo.Enter += groupBox1_Enter;
+            // 
+            // btnMenu
+            // 
+            btnMenu.Location = new Point(1052, 10);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Size = new Size(102, 58);
+            btnMenu.TabIndex = 5;
+            btnMenu.Text = "  ☰ Menu";
+            btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.Click += button1_Click;
             // 
             // cboJobs
             // 
@@ -116,9 +128,9 @@
             grpCV.Controls.Add(btnBrowse);
             grpCV.Controls.Add(txtCVPath);
             grpCV.Controls.Add(label1);
-            grpCV.Location = new Point(0, 271);
+            grpCV.Location = new Point(0, 280);
             grpCV.Name = "grpCV";
-            grpCV.Size = new Size(1168, 165);
+            grpCV.Size = new Size(1168, 192);
             grpCV.TabIndex = 1;
             grpCV.TabStop = false;
             grpCV.Text = "CV Đính Kèm";
@@ -130,7 +142,7 @@
             btnBrowse.Name = "btnBrowse";
             btnBrowse.Size = new Size(158, 34);
             btnBrowse.TabIndex = 2;
-            btnBrowse.Text = "Chọn File CV";
+            btnBrowse.Text = " 📁 Chọn File CV";
             btnBrowse.UseVisualStyleBackColor = true;
             btnBrowse.Click += btnBrowse_Click;
             // 
@@ -156,30 +168,31 @@
             btnUpload.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 163);
             btnUpload.ForeColor = SystemColors.ControlText;
             btnUpload.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUpload.Location = new Point(63, 465);
+            btnUpload.Location = new Point(53, 515);
             btnUpload.Name = "btnUpload";
             btnUpload.Size = new Size(160, 42);
             btnUpload.TabIndex = 2;
-            btnUpload.Text = "Upload CV";
+            btnUpload.Text = " 📤 Upload CV";
             btnUpload.UseVisualStyleBackColor = false;
             btnUpload.Click += btnUpload_Click;
             // 
             // btnCancel
             // 
             btnCancel.BackColor = SystemColors.HighlightText;
-            btnCancel.Location = new Point(264, 465);
+            btnCancel.Location = new Point(262, 515);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(117, 42);
             btnCancel.TabIndex = 3;
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblStatus.ForeColor = Color.SeaGreen;
-            lblStatus.Location = new Point(745, 531);
+            lblStatus.Location = new Point(737, 549);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(0, 26);
             lblStatus.TabIndex = 4;
@@ -222,5 +235,6 @@
         private Label lblStatus;
         private ComboBox cboJobs;
         private Label label2;
+        private Button btnMenu;
     }
 }
