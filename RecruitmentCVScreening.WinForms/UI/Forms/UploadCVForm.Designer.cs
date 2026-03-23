@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             grpCandidateInfo = new GroupBox();
-            btnMenu = new Button();
             cboJobs = new ComboBox();
             label2 = new Label();
             txtEmail = new TextBox();
             txtFullName = new TextBox();
             lblemail = new Label();
             lblname = new Label();
+            btnMenu = new Button();
             grpCV = new GroupBox();
             btnBrowse = new Button();
             txtCVPath = new TextBox();
@@ -49,30 +49,19 @@
             // 
             // grpCandidateInfo
             // 
-            grpCandidateInfo.Controls.Add(btnMenu);
             grpCandidateInfo.Controls.Add(cboJobs);
             grpCandidateInfo.Controls.Add(label2);
             grpCandidateInfo.Controls.Add(txtEmail);
             grpCandidateInfo.Controls.Add(txtFullName);
             grpCandidateInfo.Controls.Add(lblemail);
             grpCandidateInfo.Controls.Add(lblname);
-            grpCandidateInfo.Location = new Point(0, 12);
+            grpCandidateInfo.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpCandidateInfo.Location = new Point(0, 49);
             grpCandidateInfo.Name = "grpCandidateInfo";
             grpCandidateInfo.Size = new Size(1168, 262);
             grpCandidateInfo.TabIndex = 0;
             grpCandidateInfo.TabStop = false;
             grpCandidateInfo.Text = "Thông Tin Ứng Viên";
-            grpCandidateInfo.Enter += groupBox1_Enter;
-            // 
-            // btnMenu
-            // 
-            btnMenu.Location = new Point(1052, 10);
-            btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(102, 58);
-            btnMenu.TabIndex = 5;
-            btnMenu.Text = "  ☰ Menu";
-            btnMenu.UseVisualStyleBackColor = true;
-            btnMenu.Click += button1_Click;
             // 
             // cboJobs
             // 
@@ -87,7 +76,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(63, 182);
             label2.Name = "label2";
-            label2.Size = new Size(81, 25);
+            label2.Size = new Size(88, 25);
             label2.TabIndex = 4;
             label2.Text = "Vị Trí Td :";
             // 
@@ -110,7 +99,7 @@
             lblemail.AutoSize = true;
             lblemail.Location = new Point(63, 117);
             lblemail.Name = "lblemail";
-            lblemail.Size = new Size(63, 25);
+            lblemail.Size = new Size(65, 25);
             lblemail.TabIndex = 1;
             lblemail.Text = "Email :";
             // 
@@ -119,22 +108,32 @@
             lblname.AutoSize = true;
             lblname.Location = new Point(63, 57);
             lblname.Name = "lblname";
-            lblname.Size = new Size(76, 25);
+            lblname.Size = new Size(79, 25);
             lblname.TabIndex = 0;
             lblname.Text = "Họ Tên :";
+            // 
+            // btnMenu
+            // 
+            btnMenu.Location = new Point(12, 2);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Size = new Size(67, 41);
+            btnMenu.TabIndex = 5;
+            btnMenu.Text = " ☰";
+            btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.Click += btnMenu_Click;
             // 
             // grpCV
             // 
             grpCV.Controls.Add(btnBrowse);
             grpCV.Controls.Add(txtCVPath);
             grpCV.Controls.Add(label1);
-            grpCV.Location = new Point(0, 280);
+            grpCV.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpCV.Location = new Point(0, 317);
             grpCV.Name = "grpCV";
             grpCV.Size = new Size(1168, 192);
             grpCV.TabIndex = 1;
             grpCV.TabStop = false;
             grpCV.Text = "CV Đính Kèm";
-            grpCV.Enter += groupBox2_Enter;
             // 
             // btnBrowse
             // 
@@ -158,7 +157,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(63, 77);
             label1.Name = "label1";
-            label1.Size = new Size(74, 25);
+            label1.Size = new Size(78, 25);
             label1.TabIndex = 0;
             label1.Text = "File CV :";
             // 
@@ -168,7 +167,7 @@
             btnUpload.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 163);
             btnUpload.ForeColor = SystemColors.ControlText;
             btnUpload.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUpload.Location = new Point(53, 515);
+            btnUpload.Location = new Point(39, 543);
             btnUpload.Name = "btnUpload";
             btnUpload.Size = new Size(160, 42);
             btnUpload.TabIndex = 2;
@@ -179,7 +178,7 @@
             // btnCancel
             // 
             btnCancel.BackColor = SystemColors.HighlightText;
-            btnCancel.Location = new Point(262, 515);
+            btnCancel.Location = new Point(239, 543);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(117, 42);
             btnCancel.TabIndex = 3;
@@ -203,6 +202,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1166, 632);
+            Controls.Add(btnMenu);
             Controls.Add(lblStatus);
             Controls.Add(btnCancel);
             Controls.Add(btnUpload);

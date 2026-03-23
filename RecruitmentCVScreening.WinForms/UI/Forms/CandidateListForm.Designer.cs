@@ -71,20 +71,20 @@
             groupBox1.Controls.Add(txtScore);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtName);
+            groupBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(973, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(458, 561);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chi Tiết Ứng Viên";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(28, 371);
             label4.Name = "label4";
-            label4.Size = new Size(84, 25);
+            label4.Size = new Size(88, 25);
             label4.TabIndex = 7;
             label4.Text = "Kết Quả :";
             // 
@@ -93,7 +93,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(28, 278);
             label3.Name = "label3";
-            label3.Size = new Size(63, 25);
+            label3.Size = new Size(65, 25);
             label3.TabIndex = 6;
             label3.Text = "Điểm :";
             // 
@@ -102,7 +102,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(28, 175);
             label2.Name = "label2";
-            label2.Size = new Size(63, 25);
+            label2.Size = new Size(65, 25);
             label2.TabIndex = 5;
             label2.Text = "Email :";
             // 
@@ -111,10 +111,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(28, 91);
             label1.Name = "label1";
-            label1.Size = new Size(76, 25);
+            label1.Size = new Size(79, 25);
             label1.TabIndex = 4;
             label1.Text = "Họ Tên :";
-            label1.Click += label1_Click;
             // 
             // txtDecision
             // 
@@ -124,7 +123,6 @@
             txtDecision.ReadOnly = true;
             txtDecision.Size = new Size(141, 31);
             txtDecision.TabIndex = 3;
-            txtDecision.TextChanged += textBox4_TextChanged;
             // 
             // txtScore
             // 
@@ -155,7 +153,7 @@
             // 
             // btnReload
             // 
-            btnReload.Location = new Point(489, 624);
+            btnReload.Location = new Point(1148, 629);
             btnReload.Name = "btnReload";
             btnReload.Size = new Size(146, 49);
             btnReload.TabIndex = 2;
@@ -165,23 +163,24 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(868, 624);
+            btnBack.Location = new Point(23, 28);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(151, 49);
+            btnBack.Size = new Size(65, 40);
             btnBack.TabIndex = 3;
             btnBack.Text = " ☰  Menu";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // txtSearchName
             // 
-            txtSearchName.Location = new Point(188, 28);
+            txtSearchName.Location = new Point(263, 28);
             txtSearchName.Name = "txtSearchName";
-            txtSearchName.Size = new Size(755, 31);
+            txtSearchName.Size = new Size(680, 31);
             txtSearchName.TabIndex = 4;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(37, 28);
+            btnSearch.Location = new Point(107, 31);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(132, 34);
             btnSearch.TabIndex = 5;
