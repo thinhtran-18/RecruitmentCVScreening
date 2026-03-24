@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 namespace RecruitmentCVScreening.WinForms.UI.Forms
 {
     public partial class UploadCVForm : Form
@@ -21,22 +22,13 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             StylePrimaryButton(btnUpload);
             StyleSecondaryButton(btnCancel);
             StyleThirButton(btnBrowse);
+            StyleFourButton(btnMenu);
             SetupUX();
         }
         private string _cvPath;
 
         private readonly ApplicationService _applicationService;
         private readonly JobService _jobService = new();
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -72,6 +64,16 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             if (!ValidateInput())
                 return;
             Job selectedJob = cboJobs.SelectedItem as Job;
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn upload CV không?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+                return;
+
 
             if (selectedJob == null)
             {
@@ -137,11 +139,33 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             cboJobs.ValueMember = "Id";      // Job.Id
         }
 
-        private void UploadCVForm_Load(object sender, EventArgs e)
+        
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+        "Bạn có chắc muốn xoá toàn bộ dữ liệu?",
+        "Xác nhận",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning
+    );
+
+            if (result == DialogResult.Yes)
+            {
+                txtFullName.Text = "";
+                txtEmail.Text = "";
+                txtCVPath.Text = "";
+                cboJobs.SelectedIndex = -1;
+                txtFullName.Focus();
+            }
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
         {
 
         }
 
+        
         private void StylePrimaryButton(Button btn)
         {
             btn.BackColor = Color.FromArgb(0, 120, 215);
@@ -167,7 +191,32 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             btn.FlatAppearance.BorderSize = 0;
 
         }
+        private void StyleFourButton(Button btn)
+        {
+            btn.BackColor = Color.FromArgb(0, 120, 215);
+            btn.ForeColor = Color.White;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
 
+        }
+        void SetRoundButton(Button btn, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, btn.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+
+            btn.Region = new Region(path);
+        }
+        private void UploadCVForm_Load(object sender, EventArgs e)
+        {
+            SetRoundButton(btnUpload, 20);
+            SetRoundButton(btnCancel, 20);
+            SetRoundButton(btnMenu, 20);
+            SetRoundButton(btnBrowse, 20);
+        }
     }
 
 }

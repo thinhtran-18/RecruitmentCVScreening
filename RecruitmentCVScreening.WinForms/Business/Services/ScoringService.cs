@@ -18,7 +18,7 @@ public class ScoringService
         {
             int extraYears = cv.YearsOfExperience - job.MinExperience;
 
-            double experienceScore = 30 + (extraYears * 5);
+            double experienceScore = 20 + (extraYears * 5);
 
             // Giới hạn tối đa 50 điểm
            score += Math.Min(experienceScore, 50);

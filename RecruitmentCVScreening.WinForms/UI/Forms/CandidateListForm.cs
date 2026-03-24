@@ -25,9 +25,14 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         }
         private readonly ApplicationService _applicationService = new();
 
+        private List<ApplicationDto> _allData = new List<ApplicationDto>();
+
         private void CandidateListForm_Load(object sender, EventArgs e)
         {
             LoadCandidates();
+            SetRoundButton(btnReload, 20);
+            SetRoundButton(btnSearch, 20);
+            SetRoundButton(btnBack, 20);
         }
         private void InitGrid()
         {
@@ -42,7 +47,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             {
                 HeaderText = "Hạng",
                 DataPropertyName = "Rank",
-                Width = 60
+                Width = 20
             });
 
             dgvCandidates.Columns.Add(new DataGridViewTextBoxColumn
@@ -86,10 +91,10 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
         private void LoadCandidates()
         {
-            List<ApplicationDto> list = _applicationService.GetCandidateScores();
+            _allData = _applicationService.GetCandidateScores();
 
             // Xếp hạng theo điểm
-            var rankedList = list
+            var rankedList = _allData
                 .OrderByDescending(x => x.Score)
                 .Select((x, index) =>
                 {
@@ -98,6 +103,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
                 })
                 .ToList();
 
+            dgvCandidates.DataSource = null; // tránh bug binding
             dgvCandidates.DataSource = rankedList;
 
             // Clear chi tiết nếu chưa chọn dòng
@@ -135,21 +141,41 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
         private void btnReload_Click(object sender, EventArgs e)
         {
+            txtSearchName.Text = "";
             LoadCandidates();
         }
 
+       
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearchName.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                MessageBox.Show("Nhập tên cần tìm!");
+                return;
+            }
+
+            var result = _allData
+                .Where(x => x.FullName != null &&
+                            x.FullName.ToLower().Contains(keyword))
+                .ToList();
+
+            if (result.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy!");
+                return;
+            }
+
+            dgvCandidates.DataSource = null;
+            dgvCandidates.DataSource = result;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void InitUI()
         {
             this.BackColor = Color.FromArgb(245, 247, 250);
@@ -191,24 +217,40 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
 
             // ===== STYLE BUTTON =====
-            btnReload.BackColor = Color.FromArgb(52, 152, 219);
+            btnReload.BackColor = Color.FromArgb(231, 76, 60);
             btnReload.ForeColor = Color.White;
             btnReload.FlatStyle = FlatStyle.Flat;
             btnReload.FlatAppearance.BorderSize = 0;
             btnReload.MouseEnter += (s, e) => btnReload.BackColor = Color.FromArgb(41, 128, 185);
-            btnReload.MouseLeave += (s, e) => btnReload.BackColor = Color.FromArgb(52, 152, 219);
+            btnReload.MouseLeave += (s, e) => btnReload.BackColor = Color.FromArgb(231, 76, 60);
 
-            btnBack.BackColor = Color.FromArgb(231, 76, 60);
+            btnBack.BackColor = Color.FromArgb(52, 152, 219);
             btnBack.ForeColor = Color.White;
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.FlatAppearance.BorderSize = 0;
 
+            btnSearch.BackColor = Color.FromArgb(39, 174, 96);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.FlatAppearance.BorderSize = 0;
 
 
-            
+
+
+        }
+        void SetRoundButton(Button btn, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, btn.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+
+            btn.Region = new Region(path);
         }
 
-        
+
         private void StyleDetailUI()
         {
             // 👉 Tên
@@ -231,10 +273,6 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             txtDecision.Font = new Font("Segoe UI", 10, FontStyle.Bold);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
