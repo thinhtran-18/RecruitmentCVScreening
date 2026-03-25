@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using RecruitmentCVScreening.WinForms.Core.Enums;
 namespace RecruitmentCVScreening.WinForms.Core.Models
 {
-    internal class Application
+    public class Application
     {
         public int Id { get; set; }
 
