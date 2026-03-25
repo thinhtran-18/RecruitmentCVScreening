@@ -89,7 +89,7 @@
             // 
             // txtFullName
             // 
-            txtFullName.Location = new Point(155, 57);
+            txtFullName.Location = new Point(155, 51);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(582, 31);
             txtFullName.TabIndex = 2;
