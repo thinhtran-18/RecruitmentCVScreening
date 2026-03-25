@@ -63,6 +63,16 @@ namespace RecruitmentCVScreening.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _65fec143c1e52ce63a34faf852bbb0e0 {
+            get {
+                object obj = ResourceManager.GetObject("65fec143c1e52ce63a34faf852bbb0e0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _9b7a7c8aa8dcbf1fb83575961f7f0953 {
             get {
                 object obj = ResourceManager.GetObject("9b7a7c8aa8dcbf1fb83575961f7f0953", resourceCulture);
