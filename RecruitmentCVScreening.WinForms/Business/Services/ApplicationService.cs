@@ -1,5 +1,6 @@
 ﻿using RecruitmentCVScreening.WinForms.Business.DTOs;
 using RecruitmentCVScreening.WinForms.Core.Models;
+using RecruitmentCVScreening.WinForms.Data.Contracts;
 using RecruitmentCVScreening.WinForms.Data.Tables;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace RecruitmentCVScreening.WinForms.Business.Services
     public class ApplicationService
     {
         private readonly CVProcessingService _cvProcessing = new();
-
+        private readonly ApplicationData _applicationData = new ApplicationData();
         public CandidateScoreDto UploadAndProcessCV(
             
             string fullName,
@@ -29,7 +30,10 @@ namespace RecruitmentCVScreening.WinForms.Business.Services
             return data.GetAllForRanking();
         }
 
-        
+        public void DeleteApplication(int applicationId)
+        {
+            _applicationData.Delete(applicationId);
+        }
     }
 
 }

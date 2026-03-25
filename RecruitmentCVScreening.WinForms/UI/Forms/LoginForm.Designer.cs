@@ -45,20 +45,22 @@
             // txtUsername
             // 
             txtUsername.BackColor = SystemColors.HighlightText;
-            txtUsername.Location = new Point(52, 122);
+            txtUsername.Location = new Point(74, 203);
+            txtUsername.Margin = new Padding(4, 5, 4, 5);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Username";
-            txtUsername.Size = new Size(153, 23);
+            txtUsername.Size = new Size(217, 31);
             txtUsername.TabIndex = 2;
             // 
             // txtPassword
             // 
             txtPassword.BackColor = SystemColors.HighlightText;
-            txtPassword.Location = new Point(52, 168);
+            txtPassword.Location = new Point(74, 280);
+            txtPassword.Margin = new Padding(4, 5, 4, 5);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "Password";
-            txtPassword.Size = new Size(153, 23);
+            txtPassword.Size = new Size(217, 31);
             txtPassword.TabIndex = 3;
             // 
             // btnLogin
@@ -68,9 +70,10 @@
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = SystemColors.HighlightText;
-            btnLogin.Location = new Point(52, 207);
+            btnLogin.Location = new Point(74, 345);
+            btnLogin.Margin = new Padding(4, 5, 4, 5);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(153, 30);
+            btnLogin.Size = new Size(219, 50);
             btnLogin.TabIndex = 4;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = false;
@@ -86,9 +89,10 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = SystemColors.HighlightText;
-            button2.Location = new Point(93, 243);
+            button2.Location = new Point(133, 405);
+            button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
-            button2.Size = new Size(68, 34);
+            button2.Size = new Size(97, 57);
             button2.TabIndex = 5;
             button2.Text = "Exit";
             button2.UseVisualStyleBackColor = false;
@@ -105,18 +109,21 @@
             groupBox1.Controls.Add(txtPassword);
             groupBox1.Controls.Add(btnLogin);
             groupBox1.Controls.Add(txtUsername);
-            groupBox1.Location = new Point(245, 58);
+            groupBox1.Location = new Point(350, 97);
+            groupBox1.Margin = new Padding(4, 5, 4, 5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(249, 296);
+            groupBox1.Padding = new Padding(4, 5, 4, 5);
+            groupBox1.Size = new Size(356, 493);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.pass;
-            pictureBox3.Location = new Point(6, 168);
+            pictureBox3.Location = new Point(9, 280);
+            pictureBox3.Margin = new Padding(4, 5, 4, 5);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(29, 23);
+            pictureBox3.Size = new Size(41, 38);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 9;
             pictureBox3.TabStop = false;
@@ -124,9 +131,10 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.user2;
-            pictureBox2.Location = new Point(6, 122);
+            pictureBox2.Location = new Point(9, 203);
+            pictureBox2.Margin = new Padding(4, 5, 4, 5);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(29, 23);
+            pictureBox2.Size = new Size(41, 38);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 8;
             pictureBox2.TabStop = false;
@@ -134,24 +142,26 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.login2;
-            pictureBox1.Location = new Point(65, 11);
+            pictureBox1.Location = new Point(93, 18);
+            pictureBox1.Margin = new Padding(4, 5, 4, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(122, 105);
+            pictureBox1.Size = new Size(174, 175);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HighlightText;
             BackgroundImage = Properties.Resources.background2;
-            BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(742, 404);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1060, 673);
             Controls.Add(groupBox1);
             ForeColor = SystemColors.Desktop;
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Margin = new Padding(4, 5, 4, 5);
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng Nhập Hệ Thống";

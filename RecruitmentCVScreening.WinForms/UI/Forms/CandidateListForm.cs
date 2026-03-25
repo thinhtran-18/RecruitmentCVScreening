@@ -32,6 +32,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             LoadCandidates();
             SetRoundButton(btnReload, 20);
             SetRoundButton(btnSearch, 20);
+            SetRoundButton(btnDelete, 20);
             LoadJobFilter();
 
         }
@@ -200,6 +201,42 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             ClearDetail();
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvCandidates.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn ứng viên!");
+                return;
+            }
+
+            var dto = dgvCandidates.CurrentRow.DataBoundItem as ApplicationDto;
+
+            if (dto == null) return;
+
+            var confirm = MessageBox.Show(
+                $"Bạn có chắc muốn xóa ứng viên:\n{dto.FullName}?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm == DialogResult.No) return;
+
+            try
+            {
+                _applicationService.DeleteApplication(dto.ApplicationId);
+
+                MessageBox.Show("Xóa thành công!");
+
+                // reload lại data
+                LoadCandidates();
+                LoadJobFilter();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
         private void InitUI()
         {
             this.BackColor = Color.FromArgb(245, 247, 250);
@@ -241,12 +278,12 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
 
             // ===== STYLE BUTTON =====
-            btnReload.BackColor = Color.FromArgb(231, 76, 60);
+            btnReload.BackColor = Color.FromArgb(0, 120, 215);
             btnReload.ForeColor = Color.White;
             btnReload.FlatStyle = FlatStyle.Flat;
             btnReload.FlatAppearance.BorderSize = 0;
             btnReload.MouseEnter += (s, e) => btnReload.BackColor = Color.FromArgb(41, 128, 185);
-            btnReload.MouseLeave += (s, e) => btnReload.BackColor = Color.FromArgb(231, 76, 60);
+            btnReload.MouseLeave += (s, e) => btnReload.BackColor = Color.FromArgb(0, 120, 215);
 
 
 
@@ -255,7 +292,10 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.FlatAppearance.BorderSize = 0;
 
-
+            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.FlatAppearance.BorderSize = 0;
 
 
         }
