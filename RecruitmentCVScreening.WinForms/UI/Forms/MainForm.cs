@@ -23,31 +23,29 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         private Button btnDashboard = null!;
         private Button btnManageJobs = null!;
         private Button btnManageCandidates = null!;
-        private Button btnManageApplications = null!;
-        private Button btnExit = null!;
+        private Button btnExit = null!; // Đã bỏ btnManageApplications theo yêu cầu
 
         // Thêm dấu "?" biểu thị biến này có thể null
         private Form? currentChildForm;
+
         public MainForm()
         {
-            // 1. Gọi hàm này để giữ cho Visual Studio Designer không bị lỗi (nó nằm trong file MainForm.Designer.cs)
+            // 1. Gọi hàm này để giữ cho Visual Studio Designer không bị lỗi (nằm trong file MainForm.Designer.cs)
             InitializeComponent();
 
-            // 2. Gọi hàm tự xây dựng giao diện hiện đại của chúng ta
+            // 2. Gọi hàm tự xây dựng giao diện hiện đại
             BuildCustomUI();
 
             this.Load += MainForm_Load;
         }
+
         // Thêm dấu "?" vào object để khắc phục cảnh báo CS8622
         private void MainForm_Load(object? sender, EventArgs e)
         {
-            MessageBox.Show("Chào mừng Nhóm trưởng! Hệ thống đã sẵn sàng.",
-                            "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            // Mở mặc định màn hình Dashboard khi form vừa chạy lên
             OpenChildForm(new DashboardForm());
         }
 
-        // Đổi tên từ InitializeComponent thành BuildCustomUI để tránh xung đột (Lỗi CS0111)
         private void BuildCustomUI()
         {
             this.panelSidebar = new Panel();
@@ -57,12 +55,11 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             this.btnDashboard = new Button();
             this.btnManageJobs = new Button();
             this.btnManageCandidates = new Button();
-            this.btnManageApplications = new Button();
             this.btnExit = new Button();
 
             // Cấu hình Form chính
-            this.Text = "Hệ Thống Quản Lý Tuyển Dụng HR - Nhóm 5";
-            this.Size = new Size(1024, 768);
+            this.Text = "Hệ Thống Quản Lý Tuyển Dụng - Nhóm 5";
+            this.Size = new Size(1100, 768); // Mở rộng chiều ngang một chút để xem ảnh đẹp hơn
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.FromArgb(236, 240, 241);
             this.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -72,18 +69,24 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             this.panelSidebar.Dock = DockStyle.Left;
             this.panelSidebar.Width = 250;
 
-            this.panelSidebar.Controls.Add(this.btnExit);
-            this.panelSidebar.Controls.Add(this.btnManageApplications);
-            this.panelSidebar.Controls.Add(this.btnManageCandidates);
-            this.panelSidebar.Controls.Add(this.btnManageJobs);
-            this.panelSidebar.Controls.Add(this.btnDashboard);
+            // Thứ tự thêm vào cực kỳ quan trọng đối với DockStyle.Top (Thêm sau cùng sẽ nằm trên cùng)
+            this.panelSidebar.Controls.Add(this.btnExit);                // Nằm dưới cùng (Dock.Bottom)
+            this.panelSidebar.Controls.Add(this.btnManageCandidates);    // Nằm ở vị trí thứ 3
+            this.panelSidebar.Controls.Add(this.btnManageJobs);          // Nằm ở vị trí thứ 2
+            this.panelSidebar.Controls.Add(this.btnDashboard);           // Nằm ở vị trí thứ 1
+
+            // Tạo một khoảng trống (Spacer) để đẩy các nút lùi xuống dưới cho thoáng mắt
+            Panel panelSpacer = new Panel();
+            panelSpacer.Dock = DockStyle.Top;
+            panelSpacer.Height = 120; // Giãn từ trên xuống 120 pixel
+            this.panelSidebar.Controls.Add(panelSpacer); // Thêm vào cuối cùng nên nó sẽ chiếm vị trí cao nhất
 
             // Định dạng Nút bấm
-            Button[] menuButtons = { btnDashboard, btnManageJobs, btnManageCandidates, btnManageApplications, btnExit };
+            Button[] menuButtons = { btnDashboard, btnManageJobs, btnManageCandidates, btnExit };
             foreach (Button btn in menuButtons)
             {
                 btn.Dock = DockStyle.Top;
-                btn.Height = 60;
+                btn.Height = 120;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.FlatAppearance.BorderSize = 0;
                 btn.ForeColor = Color.White;
@@ -102,24 +105,19 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             this.btnManageCandidates.Text = "🧑‍💻 Quản Lý Ứng Viên";
             this.btnManageCandidates.Click += (s, e) => OpenChildForm(new CandidateManagementForm());
 
-            this.btnManageApplications.Text = "📝 Đơn Ứng Tuyển";
-            this.btnManageApplications.Click += (s, e) => OpenChildForm(new ApplicationManagementForm());
-
             this.btnExit.Text = "🚪 Thoát Hệ Thống";
-            this.btnExit.Dock = DockStyle.Bottom;
-            this.btnExit.BackColor = Color.FromArgb(192, 57, 43);
-
-            // Khắc phục lỗi CS0104: Gọi tường minh System.Windows.Forms.Application
+            // this.btnExit.Dock = DockStyle.Bottom; // Nút Thoát luôn nằm dưới cùng
+            this.btnExit.BackColor = Color.FromArgb(192, 57, 43); // Giữ màu đỏ cho nút thoát
             this.btnExit.Click += (s, e) => System.Windows.Forms.Application.Exit();
 
-            // panelHeader
-            this.panelHeader.BackColor = Color.FromArgb(41, 128, 185);
+            // panelHeader (Điều chỉnh màu tự nhiên hơn)
+            this.panelHeader.BackColor = Color.SteelBlue; // Sử dụng màu Xanh thép (SteelBlue) rất tự nhiên và dịu mắt
             this.panelHeader.Dock = DockStyle.Top;
-            this.panelHeader.Height = 80;
+            this.panelHeader.Height = 120;
             this.panelHeader.Controls.Add(this.lblTitle);
 
             // lblTitle
-            this.lblTitle.Text = "HỆ THỐNG QUẢN LÝ TUYỂN DỤNG HR";
+            this.lblTitle.Text = "HỆ THỐNG QUẢN LÝ TUYỂN DỤNG";
             this.lblTitle.ForeColor = Color.White;
             this.lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             this.lblTitle.AutoSize = false;
@@ -158,25 +156,75 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
     /* =========================================================================
      * CÁC CLASS GIẢ LẬP (MOCK FORMS) ĐỂ CHẠY THỬ
-     * Nhóm trưởng phân công cho các thành viên tạo các Form thật, sau đó xóa
-     * các class này đi. Giao diện chính sẽ tự động liên kết với Form thật.
      * ========================================================================= */
+
+    // YÊU CẦU 3: Thêm ảnh minh họa vào giao diện chính
     public class DashboardForm : Form
     {
         public DashboardForm()
         {
             this.Text = "Giao diện chính - Thống kê";
             this.BackColor = Color.White;
-            this.Controls.Add(new Label { Text = "Đây là khu vực hiển thị các Biểu đồ thống kê.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
+
+            // Tạo tiêu đề chào mừng
+            Label lblWelcome = new Label
+            {
+                Text = "CHÀO MỪNG ĐẾN VỚI HỆ THỐNG QUẢN LÝ TUYỂN DỤNG",
+                Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(44, 62, 80),
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Top,
+                Height = 120
+            };
+
+            // Tạo khung chứa ảnh
+            PictureBox picIllustration = new PictureBox
+            {
+                Dock = DockStyle.Fill,
+                SizeMode = PictureBoxSizeMode.Zoom, // Tự động thu phóng ảnh giữ nguyên tỷ lệ
+                BackColor = Color.White
+            };
+
+            // Tải ảnh minh họa mảng HR/Tuyển dụng từ Internet
+            try
+            {
+                // SỬA ĐƯỜNG DẪN NÀY TRÙNG VỚI NƠI LƯU ẢNH TRÊN MÁY!
+                // Nhớ giữ nguyên ký tự @ ở đầu chuỗi.
+                string imagePath = @"C:\Users\Admin\OneDrive\Hình ảnh\Camera Roll\anhdaidien.jpg";
+                picIllustration.Image = Image.FromFile(imagePath);
+            }
+            catch
+            {
+                // Bỏ qua nếu không tìm thấy đường dẫn ảnh
+            }
+
+            // Thêm vào Form (Thêm PictureBox trước để nó chiếm phần Fill còn lại)
+            this.Controls.Add(picIllustration);
+            this.Controls.Add(lblWelcome);
         }
     }
+    // THÊM CLASS NÀY VÀO:
+    // Class tùy chỉnh giúp ép WinForms hiển thị ảnh với chất lượng cao nhất (Khử răng cưa, làm mịn ảnh)
+    public class HighQualityPictureBox : PictureBox
+    {
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            pe.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            pe.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            pe.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            pe.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            base.OnPaint(pe);
+        }
+    }
+
     public class JobManagementForm : Form
     {
         public JobManagementForm()
         {
             this.Text = "Quản lý Vị trí Tuyển dụng";
             this.BackColor = Color.White;
-            this.Controls.Add(new Label { Text = "Giao diện Thêm/Sửa/Xóa Vị trí Tuyển dụng.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
+            this.Controls.Add(new Label { Text = "Giao diện Thêm/Sửa/Xóa Vị trí Tuyển dụng", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
         }
     }
 
@@ -186,17 +234,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         {
             this.Text = "Quản lý Ứng viên";
             this.BackColor = Color.White;
-            this.Controls.Add(new Label { Text = "Giao diện Lưu thông tin Ứng viên & Upload CV.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
-        }
-    }
-
-    public class ApplicationManagementForm : Form
-    {
-        public ApplicationManagementForm()
-        {
-            this.Text = "Quản lý Đơn Ứng Tuyển";
-            this.BackColor = Color.White;
-            this.Controls.Add(new Label { Text = "Giao diện duyệt Đơn, chuyển trạng thái Pending -> Hired.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
+            this.Controls.Add(new Label { Text = "Giao diện Lưu thông tin Ứng viên & Upload CV & Lọc CV", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
         }
     }
 }
