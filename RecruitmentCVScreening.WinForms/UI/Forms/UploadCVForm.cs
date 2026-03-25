@@ -22,7 +22,6 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             StylePrimaryButton(btnUpload);
             StyleSecondaryButton(btnCancel);
             StyleThirButton(btnBrowse);
-            StyleFourButton(btnMenu);
             SetupUX();
         }
         private string _cvPath;
@@ -160,12 +159,6 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             }
         }
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
         private void StylePrimaryButton(Button btn)
         {
             btn.BackColor = Color.FromArgb(0, 120, 215);
@@ -191,14 +184,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             btn.FlatAppearance.BorderSize = 0;
 
         }
-        private void StyleFourButton(Button btn)
-        {
-            btn.BackColor = Color.FromArgb(0, 120, 215);
-            btn.ForeColor = Color.White;
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderSize = 0;
-
-        }
+        
         void SetRoundButton(Button btn, int radius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -214,7 +200,6 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         {
             SetRoundButton(btnUpload, 20);
             SetRoundButton(btnCancel, 20);
-            SetRoundButton(btnMenu, 20);
             SetRoundButton(btnBrowse, 20);
         }
     }
