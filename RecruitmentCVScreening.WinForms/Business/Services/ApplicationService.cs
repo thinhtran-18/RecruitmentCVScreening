@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RecruitmentCVScreening.WinForms.Business.Services
 {
-    internal class ApplicationService
+    public class ApplicationService
     {
         private readonly CVProcessingService _cvProcessing = new();
 
@@ -28,6 +28,22 @@ namespace RecruitmentCVScreening.WinForms.Business.Services
             var data = new ApplicationData();
             return data.GetAllForRanking();
         }
+
+        //Minh
+        private readonly ApplicationData _data = new ApplicationData();
+
+        public List<ApplicationDto> GetList(int? jobId, string status)
+        {
+            var apps = _data.GetApplications(jobId, status);
+            // Logic tính Rank dựa trên Score (tùy chọn)
+            apps.Sort((x, y) => y.Score.CompareTo(x.Score));
+            for (int i = 0; i < apps.Count; i++) apps[i].Rank = i + 1;
+            return apps;
+        }
+
+        public bool UpdateStatus(int id, string status) => _data.UpdateStatus(id, status);
+
+        public bool Create(int jobId, int candidateId) => _data.AddApplication(jobId, candidateId);
     }
 
 }
