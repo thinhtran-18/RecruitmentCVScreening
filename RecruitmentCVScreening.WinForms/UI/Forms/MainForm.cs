@@ -41,7 +41,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             this.btnExit = new Button();
 
             // Cấu hình Form chính
-            this.Text = "Hệ Thống Quản Lý Tuyển Dụng HR - Nhóm 5";
+            this.Text = "Hệ Thống Quản Lý Tuyển Dụng  - Nhóm 4";
             this.Size = new Size(1700, 820);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.FromArgb(236, 240, 241);
@@ -63,7 +63,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             foreach (Button btn in menuButtons)
             {
                 btn.Dock = DockStyle.Top;
-                btn.Height = 60;
+                btn.Height = 120;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.FlatAppearance.BorderSize = 0;
                 btn.ForeColor = Color.White;
@@ -99,7 +99,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             this.panelHeader.Controls.Add(this.lblTitle);
 
             // lblTitle
-            this.lblTitle.Text = "HỆ THỐNG QUẢN LÝ TUYỂN DỤNG HR";
+            this.lblTitle.Text = "HỆ THỐNG QUẢN LÝ TUYỂN DỤNG ";
             this.lblTitle.ForeColor = Color.White;
             this.lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             this.lblTitle.AutoSize = false;
@@ -165,23 +165,5 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         }
     }
 
-    public class CandidateManagementForm : Form
-    {
-        public CandidateManagementForm()
-        {
-            this.Text = "Quản lý Ứng viên";
-            this.BackColor = Color.White;
-            this.Controls.Add(new Label { Text = "Giao diện Lưu thông tin Ứng viên & Upload CV.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
-        }
-    }
-
-    public class ApplicationManagementForm : Form
-    {
-        public ApplicationManagementForm()
-        {
-            this.Text = "Quản lý Đơn Ứng Tuyển";
-            this.BackColor = Color.White;
-            this.Controls.Add(new Label { Text = "Giao diện duyệt Đơn, chuyển trạng thái Pending -> Hired.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
-        }
-    }
-}
+    
+  }

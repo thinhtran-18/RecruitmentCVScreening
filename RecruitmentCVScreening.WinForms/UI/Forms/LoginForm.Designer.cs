@@ -47,9 +47,10 @@
             txtUsername.BackColor = SystemColors.HighlightText;
             txtUsername.Location = new Point(74, 203);
             txtUsername.Margin = new Padding(4, 5, 4, 5);
+            txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Username";
-            txtUsername.Size = new Size(217, 31);
+            txtUsername.Size = new Size(266, 46);
             txtUsername.TabIndex = 2;
             // 
             // txtPassword
@@ -57,10 +58,11 @@
             txtPassword.BackColor = SystemColors.HighlightText;
             txtPassword.Location = new Point(74, 280);
             txtPassword.Margin = new Padding(4, 5, 4, 5);
+            txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "Password";
-            txtPassword.Size = new Size(217, 31);
+            txtPassword.Size = new Size(266, 38);
             txtPassword.TabIndex = 3;
             // 
             // btnLogin
@@ -109,11 +111,11 @@
             groupBox1.Controls.Add(txtPassword);
             groupBox1.Controls.Add(btnLogin);
             groupBox1.Controls.Add(txtUsername);
-            groupBox1.Location = new Point(350, 97);
+            groupBox1.Location = new Point(328, 97);
             groupBox1.Margin = new Padding(4, 5, 4, 5);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 5, 4, 5);
-            groupBox1.Size = new Size(356, 493);
+            groupBox1.Size = new Size(397, 493);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             // 
@@ -141,8 +143,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.login2;
-            pictureBox1.Location = new Point(93, 18);
+            pictureBox1.Image = Properties.Resources._65fec143c1e52ce63a34faf852bbb0e0;
+            pictureBox1.Location = new Point(117, 18);
             pictureBox1.Margin = new Padding(4, 5, 4, 5);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(174, 175);
