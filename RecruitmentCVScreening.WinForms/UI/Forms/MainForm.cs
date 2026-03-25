@@ -24,9 +24,6 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             BuildCustomUI();
         }
 
-
-
-
         // Đổi tên từ InitializeComponent thành BuildCustomUI để tránh xung đột (Lỗi CS0111)
         private void BuildCustomUI()
         {
