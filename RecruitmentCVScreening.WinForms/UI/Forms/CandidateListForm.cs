@@ -32,7 +32,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             LoadCandidates();
             SetRoundButton(btnReload, 20);
             SetRoundButton(btnSearch, 20);
-            SetRoundButton(btnBack, 20);
+            
         }
         private void InitGrid()
         {
@@ -172,10 +172,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             dgvCandidates.DataSource = result;
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         private void InitUI()
         {
             this.BackColor = Color.FromArgb(245, 247, 250);
@@ -224,10 +221,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             btnReload.MouseEnter += (s, e) => btnReload.BackColor = Color.FromArgb(41, 128, 185);
             btnReload.MouseLeave += (s, e) => btnReload.BackColor = Color.FromArgb(231, 76, 60);
 
-            btnBack.BackColor = Color.FromArgb(52, 152, 219);
-            btnBack.ForeColor = Color.White;
-            btnBack.FlatStyle = FlatStyle.Flat;
-            btnBack.FlatAppearance.BorderSize = 0;
+           
 
             btnSearch.BackColor = Color.FromArgb(39, 174, 96);
             btnSearch.ForeColor = Color.White;

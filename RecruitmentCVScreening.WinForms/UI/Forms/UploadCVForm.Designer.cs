@@ -35,7 +35,6 @@
             txtFullName = new TextBox();
             lblemail = new Label();
             lblname = new Label();
-            btnMenu = new Button();
             grpCV = new GroupBox();
             btnBrowse = new Button();
             txtCVPath = new TextBox();
@@ -58,7 +57,7 @@
             grpCandidateInfo.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grpCandidateInfo.Location = new Point(0, 49);
             grpCandidateInfo.Name = "grpCandidateInfo";
-            grpCandidateInfo.Size = new Size(1168, 262);
+            grpCandidateInfo.Size = new Size(1288, 262);
             grpCandidateInfo.TabIndex = 0;
             grpCandidateInfo.TabStop = false;
             grpCandidateInfo.Text = "Thông Tin Ứng Viên";
@@ -68,7 +67,7 @@
             cboJobs.FormattingEnabled = true;
             cboJobs.Location = new Point(155, 182);
             cboJobs.Name = "cboJobs";
-            cboJobs.Size = new Size(250, 33);
+            cboJobs.Size = new Size(288, 33);
             cboJobs.TabIndex = 5;
             // 
             // label2
@@ -84,14 +83,14 @@
             // 
             txtEmail.Location = new Point(155, 117);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(582, 31);
+            txtEmail.Size = new Size(648, 31);
             txtEmail.TabIndex = 3;
             // 
             // txtFullName
             // 
-            txtFullName.Location = new Point(155, 57);
+            txtFullName.Location = new Point(155, 51);
             txtFullName.Name = "txtFullName";
-            txtFullName.Size = new Size(582, 31);
+            txtFullName.Size = new Size(648, 31);
             txtFullName.TabIndex = 2;
             // 
             // lblemail
@@ -112,16 +111,6 @@
             lblname.TabIndex = 0;
             lblname.Text = "Họ Tên :";
             // 
-            // btnMenu
-            // 
-            btnMenu.Location = new Point(12, 2);
-            btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(67, 41);
-            btnMenu.TabIndex = 5;
-            btnMenu.Text = " ☰";
-            btnMenu.UseVisualStyleBackColor = true;
-            btnMenu.Click += btnMenu_Click;
-            // 
             // grpCV
             // 
             grpCV.Controls.Add(btnBrowse);
@@ -130,7 +119,7 @@
             grpCV.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grpCV.Location = new Point(0, 317);
             grpCV.Name = "grpCV";
-            grpCV.Size = new Size(1168, 192);
+            grpCV.Size = new Size(1288, 192);
             grpCV.TabIndex = 1;
             grpCV.TabStop = false;
             grpCV.Text = "CV Đính Kèm";
@@ -180,7 +169,7 @@
             btnCancel.BackColor = SystemColors.HighlightText;
             btnCancel.Location = new Point(239, 543);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(117, 42);
+            btnCancel.Size = new Size(133, 42);
             btnCancel.TabIndex = 3;
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = false;
@@ -189,11 +178,11 @@
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblStatus.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblStatus.ForeColor = Color.SeaGreen;
             lblStatus.Location = new Point(737, 549);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(0, 26);
+            lblStatus.Size = new Size(0, 32);
             lblStatus.TabIndex = 4;
             lblStatus.Visible = false;
             // 
@@ -201,15 +190,14 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1166, 632);
-            Controls.Add(btnMenu);
+            ClientSize = new Size(1415, 632);
             Controls.Add(lblStatus);
             Controls.Add(btnCancel);
             Controls.Add(btnUpload);
             Controls.Add(grpCV);
             Controls.Add(grpCandidateInfo);
             Name = "UploadCVForm";
-            Text = "UploadCVForm";
+            Text = "📝  Upload Đơn Ứng Tuyển";
             Load += UploadCVForm_Load;
             grpCandidateInfo.ResumeLayout(false);
             grpCandidateInfo.PerformLayout();
@@ -235,6 +223,5 @@
         private Label lblStatus;
         private ComboBox cboJobs;
         private Label label2;
-        private Button btnMenu;
     }
 }

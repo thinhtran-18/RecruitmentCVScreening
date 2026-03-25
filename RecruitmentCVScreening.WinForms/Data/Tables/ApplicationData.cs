@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RecruitmentCVScreening.WinForms.Data.Tables
 {
-    internal class ApplicationData
+    public class ApplicationData
     {
         public void Insert(RecruitmentCVScreening.WinForms.Core.Models.Application application)
         {
@@ -76,7 +76,10 @@ namespace RecruitmentCVScreening.WinForms.Data.Tables
             c.Email,
             j.Title AS JobTitle,
             a.Score,
-            a.Status
+            a.Status,
+            a.JobId,        -- Lấy thêm để hỗ trợ lọc
+            a.CandidateId
+
         FROM Applications a
         JOIN Candidates c ON a.CandidateId = c.Id
         JOIN Jobs j ON a.JobId = j.Id
@@ -99,6 +102,8 @@ namespace RecruitmentCVScreening.WinForms.Data.Tables
 
             return list;
         }
+
+       
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecruitmentCVScreening.WinForms.Business.DTOs
 {
-    internal class ApplicationDto
+    public class ApplicationDto
     {
         public int ApplicationId { get; set; }
         public string FullName { get; set; } = string.Empty;
@@ -16,5 +16,7 @@ namespace RecruitmentCVScreening.WinForms.Business.DTOs
         public string Status { get; set; } = string.Empty;
 
         public int Rank { get; set; }
+        public int JobId { get; set; }
+        public int CandidateId { get; set; }
     }
 }

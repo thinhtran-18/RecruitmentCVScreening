@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RecruitmentCVScreening.WinForms.Business.Services
 {
-    internal class ApplicationService
+    public class ApplicationService
     {
         private readonly CVProcessingService _cvProcessing = new();
 
@@ -28,6 +28,8 @@ namespace RecruitmentCVScreening.WinForms.Business.Services
             var data = new ApplicationData();
             return data.GetAllForRanking();
         }
+
+        
     }
 
 }
