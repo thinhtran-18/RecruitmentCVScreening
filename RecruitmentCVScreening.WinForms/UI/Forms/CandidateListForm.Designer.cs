@@ -41,6 +41,7 @@
             btnReload = new Button();
             txtSearchName = new TextBox();
             btnSearch = new Button();
+            cmbJob = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvCandidates).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -51,7 +52,7 @@
             dgvCandidates.AllowUserToDeleteRows = false;
             dgvCandidates.BackgroundColor = SystemColors.Window;
             dgvCandidates.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCandidates.Location = new Point(12, 84);
+            dgvCandidates.Location = new Point(25, 146);
             dgvCandidates.Name = "dgvCandidates";
             dgvCandidates.ReadOnly = true;
             dgvCandidates.RowHeadersWidth = 62;
@@ -177,12 +178,21 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
+            // cmbJob
+            // 
+            cmbJob.FormattingEnabled = true;
+            cmbJob.Location = new Point(206, 84);
+            cmbJob.Name = "cmbJob";
+            cmbJob.Size = new Size(324, 33);
+            cmbJob.TabIndex = 6;
+            // 
             // CandidateListForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1467, 734);
+            Controls.Add(cmbJob);
             Controls.Add(btnSearch);
             Controls.Add(txtSearchName);
             Controls.Add(btnReload);
@@ -214,5 +224,6 @@
         private Label label1;
         private TextBox txtSearchName;
         private Button btnSearch;
+        private ComboBox cmbJob;
     }
 }
