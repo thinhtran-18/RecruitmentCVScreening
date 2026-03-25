@@ -19,6 +19,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         private Form currentChildForm;
         public MainForm()
         {
+            // 1. Gọi hàm này để giữ cho Visual Studio Designer không bị lỗi (nó nằm trong file MainForm.Designer.cs)
             InitializeComponent();
             BuildCustomUI();
         }
@@ -161,6 +162,26 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             this.Text = "Quản lý Vị trí Tuyển dụng";
             this.BackColor = Color.White;
             this.Controls.Add(new Label { Text = "Giao diện Thêm/Sửa/Xóa Vị trí Tuyển dụng.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
+        }
+    }
+
+    public class CandidateManagementForm : Form
+    {
+        public CandidateManagementForm()
+        {
+            this.Text = "Quản lý Ứng viên";
+            this.BackColor = Color.White;
+            this.Controls.Add(new Label { Text = "Giao diện Lưu thông tin Ứng viên & Upload CV.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
+        }
+    }
+
+    public class ApplicationManagementForm : Form
+    {
+        public ApplicationManagementForm()
+        {
+            this.Text = "Quản lý Đơn Ứng Tuyển";
+            this.BackColor = Color.White;
+            this.Controls.Add(new Label { Text = "Giao diện duyệt Đơn, chuyển trạng thái Pending -> Hired.", AutoSize = true, Location = new Point(50, 50), Font = new Font("Segoe UI", 12F) });
         }
     }
 }
