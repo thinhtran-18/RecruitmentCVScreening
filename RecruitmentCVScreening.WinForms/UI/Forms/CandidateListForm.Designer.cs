@@ -41,6 +41,8 @@
             btnReload = new Button();
             txtSearchName = new TextBox();
             btnSearch = new Button();
+            cmbJob = new ComboBox();
+            btnDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCandidates).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -51,7 +53,7 @@
             dgvCandidates.AllowUserToDeleteRows = false;
             dgvCandidates.BackgroundColor = SystemColors.Window;
             dgvCandidates.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCandidates.Location = new Point(12, 84);
+            dgvCandidates.Location = new Point(25, 146);
             dgvCandidates.Name = "dgvCandidates";
             dgvCandidates.ReadOnly = true;
             dgvCandidates.RowHeadersWidth = 62;
@@ -152,7 +154,7 @@
             // 
             // btnReload
             // 
-            btnReload.Location = new Point(1139, 601);
+            btnReload.Location = new Point(1022, 617);
             btnReload.Name = "btnReload";
             btnReload.Size = new Size(146, 49);
             btnReload.TabIndex = 2;
@@ -177,12 +179,32 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
+            // cmbJob
+            // 
+            cmbJob.FormattingEnabled = true;
+            cmbJob.Location = new Point(206, 84);
+            cmbJob.Name = "cmbJob";
+            cmbJob.Size = new Size(324, 33);
+            cmbJob.TabIndex = 6;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(1254, 617);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(128, 49);
+            btnDelete.TabIndex = 7;
+            btnDelete.Text = "  🗑️ Xóa ";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // CandidateListForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1467, 734);
+            Controls.Add(btnDelete);
+            Controls.Add(cmbJob);
             Controls.Add(btnSearch);
             Controls.Add(txtSearchName);
             Controls.Add(btnReload);
@@ -214,5 +236,7 @@
         private Label label1;
         private TextBox txtSearchName;
         private Button btnSearch;
+        private ComboBox cmbJob;
+        private Button btnDelete;
     }
 }

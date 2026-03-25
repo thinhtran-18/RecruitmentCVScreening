@@ -103,7 +103,20 @@ namespace RecruitmentCVScreening.WinForms.Data.Tables
             return list;
         }
 
-       
+        public void Delete(int applicationId)
+        {
+            using var conn = AppDbContext.GetConnection();
+            conn.Open();
+
+            var cmd = new SqlCommand(
+                "DELETE FROM Applications WHERE Id = @id",
+                conn
+            );
+
+            cmd.Parameters.AddWithValue("@id", applicationId);
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }
 

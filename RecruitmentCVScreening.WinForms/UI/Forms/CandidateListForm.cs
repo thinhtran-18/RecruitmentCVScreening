@@ -32,7 +32,9 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             LoadCandidates();
             SetRoundButton(btnReload, 20);
             SetRoundButton(btnSearch, 20);
-            
+            SetRoundButton(btnDelete, 20);
+            LoadJobFilter();
+
         }
         private void InitGrid()
         {
@@ -62,6 +64,13 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
                 HeaderText = "Email",
                 DataPropertyName = "Email",
                 Width = 300
+            });
+
+            dgvCandidates.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "JobTitle",
+                HeaderText = "Vị trí",
+                DataPropertyName = "JobTitle"
             });
 
             dgvCandidates.Columns.Add(new DataGridViewTextBoxColumn
@@ -145,34 +154,89 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             LoadCandidates();
         }
 
-       
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string keyword = txtSearchName.Text.Trim().ToLower();
-
-            if (string.IsNullOrEmpty(keyword))
-            {
-                MessageBox.Show("Nhập tên cần tìm!");
-                return;
-            }
-
-            var result = _allData
-                .Where(x => x.FullName != null &&
-                            x.FullName.ToLower().Contains(keyword))
-                .ToList();
-
-            if (result.Count == 0)
-            {
-                MessageBox.Show("Không tìm thấy!");
-                return;
-            }
-
-            dgvCandidates.DataSource = null;
-            dgvCandidates.DataSource = result;
+            ApplyFilter();
         }
 
-        
+        private void LoadJobFilter()
+        {
+            var jobs = _allData
+                .Select(x => x.JobTitle)
+                .Distinct()
+                .ToList();
+
+            jobs.Insert(0, "All..."); // thêm option ALL
+
+            cmbJob.DataSource = jobs;
+        }
+        private void ApplyFilter()
+        {
+            string keyword = txtSearchName.Text.Trim().ToLower();
+            string selectedJob = cmbJob.SelectedItem?.ToString();
+
+            var filtered = _allData
+                .Where(x =>
+                    // 🔍 SEARCH
+                    (string.IsNullOrEmpty(keyword) ||
+                     (x.FullName != null && x.FullName.ToLower().Contains(keyword)))
+
+                    // 🎯 JOB FILTER
+                    &&
+                    (selectedJob == "All các job ..." || x.JobTitle == selectedJob)
+                )
+                .OrderByDescending(x => x.Score)
+                .Select((x, index) =>
+                {
+                    x.Rank = index + 1;
+                    return x;
+                })
+                .ToList();
+
+            dgvCandidates.DataSource = null;
+            dgvCandidates.DataSource = filtered;
+
+            ClearDetail();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvCandidates.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn ứng viên!");
+                return;
+            }
+
+            var dto = dgvCandidates.CurrentRow.DataBoundItem as ApplicationDto;
+
+            if (dto == null) return;
+
+            var confirm = MessageBox.Show(
+                $"Bạn có chắc muốn xóa ứng viên:\n{dto.FullName}?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm == DialogResult.No) return;
+
+            try
+            {
+                _applicationService.DeleteApplication(dto.ApplicationId);
+
+                MessageBox.Show("Xóa thành công!");
+
+                // reload lại data
+                LoadCandidates();
+                LoadJobFilter();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
         private void InitUI()
         {
             this.BackColor = Color.FromArgb(245, 247, 250);
@@ -214,21 +278,24 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
 
             // ===== STYLE BUTTON =====
-            btnReload.BackColor = Color.FromArgb(231, 76, 60);
+            btnReload.BackColor = Color.FromArgb(0, 120, 215);
             btnReload.ForeColor = Color.White;
             btnReload.FlatStyle = FlatStyle.Flat;
             btnReload.FlatAppearance.BorderSize = 0;
             btnReload.MouseEnter += (s, e) => btnReload.BackColor = Color.FromArgb(41, 128, 185);
-            btnReload.MouseLeave += (s, e) => btnReload.BackColor = Color.FromArgb(231, 76, 60);
+            btnReload.MouseLeave += (s, e) => btnReload.BackColor = Color.FromArgb(0, 120, 215);
 
-           
+
 
             btnSearch.BackColor = Color.FromArgb(39, 174, 96);
             btnSearch.ForeColor = Color.White;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.FlatAppearance.BorderSize = 0;
 
-
+            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.FlatAppearance.BorderSize = 0;
 
 
         }
@@ -297,6 +364,8 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
                 control.Region = new Region(path);
             }
         }
+
+        
     }
 
 }
