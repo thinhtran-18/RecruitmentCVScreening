@@ -39,7 +39,6 @@
             txtEmail = new TextBox();
             txtName = new TextBox();
             btnReload = new Button();
-            btnBack = new Button();
             txtSearchName = new TextBox();
             btnSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCandidates).BeginInit();
@@ -74,7 +73,7 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(973, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(458, 561);
+            groupBox1.Size = new Size(451, 561);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chi Tiết Ứng Viên";
@@ -153,7 +152,7 @@
             // 
             // btnReload
             // 
-            btnReload.Location = new Point(1148, 629);
+            btnReload.Location = new Point(1139, 601);
             btnReload.Name = "btnReload";
             btnReload.Size = new Size(146, 49);
             btnReload.TabIndex = 2;
@@ -161,26 +160,16 @@
             btnReload.UseVisualStyleBackColor = true;
             btnReload.Click += btnReload_Click;
             // 
-            // btnBack
-            // 
-            btnBack.Location = new Point(23, 28);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(65, 40);
-            btnBack.TabIndex = 3;
-            btnBack.Text = " ☰  Menu";
-            btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
-            // 
             // txtSearchName
             // 
-            txtSearchName.Location = new Point(263, 28);
+            txtSearchName.Location = new Point(206, 28);
             txtSearchName.Name = "txtSearchName";
             txtSearchName.Size = new Size(680, 31);
             txtSearchName.TabIndex = 4;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(107, 31);
+            btnSearch.Location = new Point(25, 28);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(132, 34);
             btnSearch.TabIndex = 5;
@@ -196,13 +185,12 @@
             ClientSize = new Size(1467, 734);
             Controls.Add(btnSearch);
             Controls.Add(txtSearchName);
-            Controls.Add(btnBack);
             Controls.Add(btnReload);
             Controls.Add(groupBox1);
             Controls.Add(dgvCandidates);
             DoubleBuffered = true;
             Name = "CandidateListForm";
-            Text = "CandidateListForm";
+            Text = "\U0001f9d1‍💻 Quản Lý Ứng Viên";
             Load += CandidateListForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCandidates).EndInit();
             groupBox1.ResumeLayout(false);
@@ -216,7 +204,6 @@
         private DataGridView dgvCandidates;
         private GroupBox groupBox1;
         private Button btnReload;
-        private Button btnBack;
         private TextBox txtDecision;
         private TextBox txtScore;
         private TextBox txtEmail;
