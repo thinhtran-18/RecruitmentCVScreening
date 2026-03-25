@@ -30,3 +30,13 @@ CREATE TABLE Applications (
         FOREIGN KEY (CandidateId) REFERENCES Candidates(Id)
 );
 
+CREATE TABLE Users (
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- Tự động tăng ID
+    Username NVARCHAR(50) NOT NULL UNIQUE, -- Tên đăng nhập (không được trùng)
+    Password NVARCHAR(50) NOT NULL -- Mật khẩu
+);
+GO
+
+INSERT INTO Users (Username, Password) 
+VALUES ('admin', '123456'); 
+GO
