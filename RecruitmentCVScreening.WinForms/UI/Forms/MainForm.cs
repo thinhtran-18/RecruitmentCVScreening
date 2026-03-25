@@ -14,38 +14,18 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 {
     public partial class MainForm : Form
     {
-        // Thêm "= null!" để khắc phục cảnh báo CS8618 của .NET hiện đại
-        private Panel panelSidebar = null!;
-        private Panel panelHeader = null!;
-        private Panel panelDesktop = null!;
-        private Label lblTitle = null!;
+        private Panel panelSidebar, panelHeader, panelDesktop; private Label lblTitle; private Button btnDashboard, btnManageJobs, btnManageCandidates, btnManageApplications, btnExit;
 
-        private Button btnDashboard = null!;
-        private Button btnManageJobs = null!;
-        private Button btnManageCandidates = null!;
-        private Button btnManageApplications = null!;
-        private Button btnExit = null!;
-
-        // Thêm dấu "?" biểu thị biến này có thể null
-        private Form? currentChildForm;
+        private Form currentChildForm;
         public MainForm()
         {
             // 1. Gọi hàm này để giữ cho Visual Studio Designer không bị lỗi (nó nằm trong file MainForm.Designer.cs)
             InitializeComponent();
-
-            // 2. Gọi hàm tự xây dựng giao diện hiện đại của chúng ta
             BuildCustomUI();
-
-            this.Load += MainForm_Load;
         }
-        // Thêm dấu "?" vào object để khắc phục cảnh báo CS8622
-        private void MainForm_Load(object? sender, EventArgs e)
-        {
-            MessageBox.Show("Chào mừng Nhóm trưởng! Hệ thống đã sẵn sàng.",
-                            "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            OpenChildForm(new DashboardForm());
-        }
+
+
 
         // Đổi tên từ InitializeComponent thành BuildCustomUI để tránh xung đột (Lỗi CS0111)
         private void BuildCustomUI()
@@ -62,7 +42,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
             // Cấu hình Form chính
             this.Text = "Hệ Thống Quản Lý Tuyển Dụng HR - Nhóm 5";
-            this.Size = new Size(1024, 768);
+            this.Size = new Size(1700, 820);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.FromArgb(236, 240, 241);
             this.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -100,10 +80,10 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             this.btnManageJobs.Click += (s, e) => OpenChildForm(new JobManagementForm());
 
             this.btnManageCandidates.Text = "🧑‍💻 Quản Lý Ứng Viên";
-            this.btnManageCandidates.Click += (s, e) => OpenChildForm(new CandidateManagementForm());
+            this.btnManageCandidates.Click += (s, e) => OpenChildForm(new CandidateListForm());
 
             this.btnManageApplications.Text = "📝 Đơn Ứng Tuyển";
-            this.btnManageApplications.Click += (s, e) => OpenChildForm(new ApplicationManagementForm());
+            this.btnManageApplications.Click += (s, e) => OpenChildForm(new UploadCVForm());
 
             this.btnExit.Text = "🚪 Thoát Hệ Thống";
             this.btnExit.Dock = DockStyle.Bottom;
@@ -153,6 +133,11 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             childForm.Show();
 
             lblTitle.Text = childForm.Text.ToUpper();
+        }
+
+        private void MainForm_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 
