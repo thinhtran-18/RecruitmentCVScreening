@@ -93,7 +93,7 @@ namespace RecruitmentCVScreening.WinForms.CVProcessing.Extractors
 
         private int ExtractExperience(string text)
         {
-            var match = Regex.Match(text, @"(\d+)\s+year");
+            var match = Regex.Match(text, @"(\d+)\s+years");
             return match.Success ? int.Parse(match.Groups[1].Value) : 0;
         }
     }

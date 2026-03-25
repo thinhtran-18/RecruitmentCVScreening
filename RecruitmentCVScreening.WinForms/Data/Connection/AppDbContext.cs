@@ -17,5 +17,7 @@ public   class AppDbContext
     {
         return new SqlConnection(_connectionString);
     }
+
+
 }
 
