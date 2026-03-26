@@ -74,7 +74,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             this.btnDashboard.Click += (s, e) => OpenChildForm(new DashboardForm());
 
             this.btnManageJobs.Text = "💼 Quản Lý Vị Trí";
-            this.btnManageJobs.Click += (s, e) => OpenChildForm(new JobManagementForm());
+            this.btnManageJobs.Click += (s, e) => OpenChildForm(new JobForm());
 
             this.btnManageCandidates.Text = "🧑‍💻 Quản Lý Ứng Viên";
             this.btnManageCandidates.Click += (s, e) => OpenChildForm(new CandidateListForm());

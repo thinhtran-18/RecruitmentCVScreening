@@ -73,7 +73,7 @@
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtName);
             groupBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(973, 12);
+            groupBox1.Location = new Point(973, 112);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(451, 561);
             groupBox1.TabIndex = 1;
@@ -154,7 +154,7 @@
             // 
             // btnReload
             // 
-            btnReload.Location = new Point(1022, 617);
+            btnReload.Location = new Point(1001, 28);
             btnReload.Name = "btnReload";
             btnReload.Size = new Size(146, 49);
             btnReload.TabIndex = 2;
@@ -189,7 +189,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(1254, 617);
+            btnDelete.Location = new Point(1247, 28);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(128, 49);
             btnDelete.TabIndex = 7;
