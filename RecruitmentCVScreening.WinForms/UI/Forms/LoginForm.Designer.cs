@@ -118,6 +118,7 @@
             groupBox1.Size = new Size(397, 493);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // pictureBox3
             // 
@@ -151,6 +152,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // LoginForm
             // 

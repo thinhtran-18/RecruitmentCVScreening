@@ -31,6 +31,17 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         public LoginForm()
         {
             InitializeComponent();
+            // Bắt sự kiện ấn phím cho 2 ô nhập liệu
+            txtUsername.KeyDown += txtUsername_KeyDown;
+            txtPassword.KeyDown += txtPassword_KeyDown;
+
+            // Bo tròn góc cho cái khung nền trắng. 
+            // Dựa vào code cũ của bạn, tôi đoán cái khung trắng đó tên là "groupBox1".
+            // Nếu nó tên là "panel1" thì bạn đổi chữ "groupBox1" thành "panel1" nhé!
+            if (this.Controls["groupBox1"] != null)
+            {
+                this.Controls["groupBox1"].Paint += KhungTrang_Paint;
+            }
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -127,11 +138,11 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
         private void btnLogin_Paint(object sender, PaintEventArgs e)
         {
             Button btn = (Button)sender;
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias; 
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            using (GraphicsPath path = GetRoundedPath(btn.ClientRectangle, 15)) 
+            using (GraphicsPath path = GetRoundedPath(btn.ClientRectangle, 15))
             {
-                btn.Region = new Region(path); 
+                btn.Region = new Region(path);
             }
         }
         // Bo góc Exit
@@ -143,6 +154,48 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             using (GraphicsPath path = GetRoundedPath(btn.ClientRectangle, 15))
             {
                 btn.Region = new Region(path);
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+        // Khi ấn Enter ở ô Username -> Nhảy xuống Password
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Tắt âm thanh "ting" khó chịu của Windows
+                txtPassword.Focus();       // Chuyển con trỏ chuột xuống ô Password
+            }
+        }
+
+        // Khi ấn Enter ở ô Password -> Gọi nút Đăng nhập
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Tắt âm thanh "ting"
+                button1_Click(sender, e);  // Tự động kích hoạt hành động Click của nút Login
+            }
+        }
+
+        // Hàm xử lý bo góc cho cái khung (Panel/GroupBox) màu trắng
+        private void KhungTrang_Paint(object sender, PaintEventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            // Số 20 ở đây là độ cong của góc. Bạn có thể tăng lên 30 nếu muốn góc tròn hơn.
+            using (GraphicsPath path = GetRoundedPath(ctrl.ClientRectangle, 30))
+            {
+                ctrl.Region = new Region(path);
             }
         }
     }
