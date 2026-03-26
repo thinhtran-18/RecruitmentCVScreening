@@ -185,7 +185,7 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
                     // 🎯 JOB FILTER
                     &&
-                    (selectedJob == "All các job ..." || x.JobTitle == selectedJob)
+                    (selectedJob == "All..." || x.JobTitle == selectedJob)
                 )
                 .OrderByDescending(x => x.Score)
                 .Select((x, index) =>
@@ -198,7 +198,12 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             dgvCandidates.DataSource = null;
             dgvCandidates.DataSource = filtered;
 
-            ClearDetail();
+            if (dgvCandidates.Rows.Count > 0)
+            {
+                var dto = dgvCandidates.Rows[0].DataBoundItem as ApplicationDto;
+                if (dto != null)
+                    ShowDetail(dto);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
