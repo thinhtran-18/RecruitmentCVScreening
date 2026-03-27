@@ -140,7 +140,6 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
         }
     }
-
     /* =========================================================================
      * CÁC CLASS GIẢ LẬP (MOCK FORMS) ĐỂ CHẠY THỬ
      * Nhóm trưởng phân công cho các thành viên tạo các Form thật, sau đó xóa
@@ -159,7 +158,6 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
             BuildUI();
             LoadStatistics();
         }
-
         /// <summary>
         /// Hàm xây dựng giao diện các thẻ (Cards) thống kê trên Dashboard
         /// </summary>
@@ -191,10 +189,8 @@ namespace RecruitmentCVScreening.WinForms.UI.Forms
 
             // Thẻ 1: Tổng Vị trí tuyển dụng (Màu xanh dương)
             Panel cardJobs = CreateStatCard("VỊ TRÍ TUYỂN DỤNG", Color.FromArgb(52, 152, 219), out lblCountJobs);
-
             // Thẻ 2: Tổng Ứng viên (Màu xanh lá)
             Panel cardCandidates = CreateStatCard("TỔNG SỐ ỨNG VIÊN", Color.FromArgb(39, 174, 96), out lblCountCandidates);
-
             // Thẻ 3: Số ứng viên qua vòng lọc CV (Màu tím)
             Panel cardPassedApps = CreateStatCard("ỨNG VIÊN QUA VÒNG LỌC", Color.FromArgb(142, 68, 173), out lblCountPassedApps);
 
